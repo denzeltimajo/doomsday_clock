@@ -48,8 +48,8 @@ const scale = (num, in_min, in_max, out_min, out_max) => {
     return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
-var l = new Color("#c62828");
-var r = new Color("#000000");
+var l = new Color("#ffeb3b");
+var r = new Color("#ff9800");
 var backgroundColor = LinearColorInterpolator.findColorBetween(l, r, 50).asRgbCss();
 
 /**
@@ -60,8 +60,56 @@ var backgroundColor = LinearColorInterpolator.findColorBetween(l, r, 50).asRgbCs
  * Jan = #000000 - BLACK
  */
 
-function sss() {
+const finalDate = 12000
+const startDate = 0
+
+let currentTimeAndDay = 6000
+let minDateOfColor = 6000
+let maxDateOfColor = finalDate
+
+let timer
+
+function update() {
     
+    
+    let targetDate
+
+
+    if(currentTimeAndDay < 7500){
+        l = new Color("#2ecc71");
+        r = new Color("#ffeb3b");
+        minDateOfColor = 6000
+        maxDateOfColor = 7500
+    }
+    else if(currentTimeAndDay < 9000){
+        l = new Color("#ffeb3b");
+        r = new Color("#ff9800");
+        minDateOfColor = 7500
+        maxDateOfColor = 9000
+    }
+    else if(currentTimeAndDay < 10500){
+        l = new Color("#ff9800");
+        r = new Color("#c62828");
+        minDateOfColor = 9000
+        maxDateOfColor = 10500
+    }
+    else{
+        l = new Color("#c62828");
+        r = new Color("#000000");
+        minDateOfColor = 10500
+        maxDateOfColor = 12000
+    }
+
+    let scaledTime = scale(currentTimeAndDay, minDateOfColor, maxDateOfColor, 0, 100)
+
+    document.body.style.backgroundColor = LinearColorInterpolator.findColorBetween(l, r, scaledTime).asRgbCss();
+
+    currentTimeAndDay++
+
 }
 
-document.body.style.backgroundColor = LinearColorInterpolator.findColorBetween(l, r, 50).asRgbCss();
+
+setInterval(update, 10)
+
+
+
