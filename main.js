@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, Menu } = require('electron')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -7,11 +7,11 @@ let win
 function createWindow () {
   // Create the browser window.
   win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 400,
+    height: 300,
     webPreferences: {
       nodeIntegration: true
-    }
+    },
   })
 
   // and load the index.html of the app.
@@ -27,6 +27,8 @@ function createWindow () {
     // when you should delete the corresponding element.
     win = null
   })
+
+  win.removeMenu()
 }
 
 // This method will be called when Electron has finished
