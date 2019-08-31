@@ -1,0 +1,23 @@
+{
+  "name": "doomsday_clock",
+  "version": "1.0.0",
+  "description": "A doomsday clock using Electron.js",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denzeltimajo/doomsday_clock.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/denzeltimajo/doomsday_clock/issues"
+  },
+  "homepage": "https://github.com/denzeltimajo/doomsday_clock#readme",
+  "devDependencies": {
+    "electron": "6.0.7"
+  }
+}
