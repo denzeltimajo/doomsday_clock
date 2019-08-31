@@ -18,7 +18,7 @@ Color.prototype.asRgbCss = function() {
     return "rgb("+this.r+", "+this.g+", "+this.b+")";
 }
 
-var LinearColorInterpolator = {
+const LinearColorInterpolator = {
     // convert 6-digit hex to rgb components;
     // accepts with or without hash ("335577" or "#335577")
     convertHexToRgb: function(hex) {
@@ -43,7 +43,11 @@ var LinearColorInterpolator = {
         return new Color(newColor);
     }
 }
-   
+
+const scale = (num, in_min, in_max, out_min, out_max) => {
+    return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
 var l = new Color("#c62828");
 var r = new Color("#000000");
 var backgroundColor = LinearColorInterpolator.findColorBetween(l, r, 50).asRgbCss();
@@ -56,5 +60,8 @@ var backgroundColor = LinearColorInterpolator.findColorBetween(l, r, 50).asRgbCs
  * Jan = #000000 - BLACK
  */
 
+function sss() {
+    
+}
 
 document.body.style.backgroundColor = LinearColorInterpolator.findColorBetween(l, r, 50).asRgbCss();
