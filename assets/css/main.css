@@ -1,7 +1,14 @@
 .padder {
-    padding: 2rem 1rem
+    padding: 2rem 1rem;
 }
 
 .mini-text {
-    font-size: 1.75rem
+    font-size: 6vw;
+}
+
+#timer {
+    font-family: 'Inconsolata', 'IBM Plex Mono', 'Titillium Web', sans-serif;
+    font-size: 10vw;
+    text-shadow: 0.25vw 0.25vw 2px rgba(0,0,0,.9);
+    color: #fff;
 }

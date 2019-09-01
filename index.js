@@ -63,7 +63,7 @@ var backgroundColor = LinearColorInterpolator.findColorBetween(l, r, 50).asRgbCs
 const finalDate = 12000
 const startDate = 0
 
-let currentTimeAndDay = 6000
+let currentTimeAndDay = 0
 let minDateOfColor = 6000
 let maxDateOfColor = finalDate
 
