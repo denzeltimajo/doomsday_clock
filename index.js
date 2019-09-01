@@ -1,4 +1,4 @@
-// const electron = require('electron')
+const {remote} = require('electron')
 
 
 //<script src="https://gist.github.com/maxwells/8251275.js"></script>
@@ -115,7 +115,20 @@ function tick_timer(currentTimeAndDay){
 }
 
 
+function close_app(){
+    remote.getCurrentWindow().close()
+}
+
 setInterval(update, 10)
 
 
 
+/**
+ * TODO: kete
+ * FIX HAMBURGER BUTTON NOT WORKING
+ * Change D-day to image
+ * Rezable toggle
+ * Opacity togle
+ * Always in front toggle
+ * Change bottow navbar layout
+ */

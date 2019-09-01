@@ -13,12 +13,38 @@
 
   </head>
   <body>
-      <section class="padder text-center">
-            <div class="container">
-                <h1 id="timer"><span id="hour">421</span>:<span id="minute">59</span>:<span id="second">58</span><span class="mini-text">.<span id="millisecond">12</span></span></h1>
-            </div>
-        </section>
-
+  <section class="padder text-center">
+        <div class="container">
+            <h1 id="timer"><span id="hour">421</span>:<span id="minute">59</span>:<span id="second">58</span><span class="mini-text">.<span id="millisecond">12</span></span></h1>
+        </div>
+    </section>
+    <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark">
+      <h2 class="drag-text navbar-brand">D-day</h2>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" onclick="close_app()" href="#">Close</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
     <script src="index.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="/docs/4.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+
+
   </body>
 </html>

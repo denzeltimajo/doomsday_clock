@@ -6,6 +6,18 @@
     font-size: 6vw;
 }
 
+.navpos {
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+.drag-text{
+    -webkit-app-region: drag;
+}
+
 #timer {
     font-family: 'Inconsolata', 'IBM Plex Mono', 'Titillium Web', sans-serif;
     font-size: 12.5vw;
