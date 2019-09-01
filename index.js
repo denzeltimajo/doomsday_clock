@@ -60,10 +60,26 @@ var backgroundColor = LinearColorInterpolator.findColorBetween(l, r, 50).asRgbCs
  * Jan = #000000 - BLACK
  */
 
+// const dateCycle = [
+//      {month: 'Sep', color: '#2ecc71', date: new Date(2019, 8, 2)},
+//      {month: 'Oct', color: '#ffeb3b', date: new Date(2019, 9, 1)},
+//      {month: 'Nov', color: '#ff9800', date: new Date(2019, 10, 1)},
+//      {month: 'Dec', color: '#c62828', date: new Date(2019, 10, 30)},
+//      {month: 'Jan', color: '#000000', date: new Date(2019, 11, 28)},
+//  ]
+const dateCycle = [
+     {month: 'Sep', color: '#2ecc71', date:6000 },
+     {month: 'Oct', color: '#ffeb3b', date:7500 },
+     {month: 'Nov', color: '#ff9800', date:9000 },
+     {month: 'Dec', color: '#c62828', date:10500 },
+     {month: 'Jan', color: '#000000', date:12000 },
+ ]
+
 const finalDate = 12000
 const startDate = 0
 
-let currentTimeAndDay = 0
+// let currentTimeAndDay = new Date()
+let currentTimeAndDay = 5000
 let minDateOfColor = 6000
 let maxDateOfColor = finalDate
 
@@ -74,36 +90,24 @@ function update() {
     
     let targetDate
 
+    for(let i=1; i<dateCycle.length; i++){
+        if(currentTimeAndDay < dateCycle[i].date){
+            l = new Color(dateCycle[i-1].color);
+            r = new Color(dateCycle[i].color)
+            
+            minDateOfColor = dateCycle[i-1].date
+            maxDateOfColor = dateCycle[i].date
+            break
+        }
+    }
+    
 
-    if(currentTimeAndDay < 7500){
-        l = new Color("#2ecc71");
-        r = new Color("#ffeb3b");
-        minDateOfColor = 6000
-        maxDateOfColor = 7500
-    }
-    else if(currentTimeAndDay < 9000){
-        l = new Color("#ffeb3b");
-        r = new Color("#ff9800");
-        minDateOfColor = 7500
-        maxDateOfColor = 9000
-    }
-    else if(currentTimeAndDay < 10500){
-        l = new Color("#ff9800");
-        r = new Color("#c62828");
-        minDateOfColor = 9000
-        maxDateOfColor = 10500
-    }
-    else{
-        l = new Color("#c62828");
-        r = new Color("#000000");
-        minDateOfColor = 10500
-        maxDateOfColor = 12000
-    }
 
     let scaledTime = scale(currentTimeAndDay, minDateOfColor, maxDateOfColor, 0, 100)
 
     document.body.style.backgroundColor = LinearColorInterpolator.findColorBetween(l, r, scaledTime).asRgbCss();
 
+    // currentTimeAndDay = new Date()
     currentTimeAndDay++
 
 }
