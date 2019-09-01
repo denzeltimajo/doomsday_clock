@@ -60,48 +60,26 @@ var backgroundColor = LinearColorInterpolator.findColorBetween(l, r, 50).asRgbCs
  * Jan = #000000 - BLACK
  */
 
-// const dateCycle = [
-//      {month: 'Sep', color: '#2ecc71', date: new Date(2019, 8, 2)},
-//      {month: 'Oct', color: '#ffeb3b', date: new Date(2019, 9, 1)},
-//      {month: 'Nov', color: '#ff9800', date: new Date(2019, 10, 1)},
-//      {month: 'Dec', color: '#c62828', date: new Date(2019, 10, 30)},
-//      {month: 'Jan', color: '#000000', date: new Date(2019, 11, 28)},
-//  ]
 const dateCycle = [
-     {month: 'Sep', color: '#2ecc71', date:6000 },
-     {month: 'Oct', color: '#ffeb3b', date:7500 },
-     {month: 'Nov', color: '#ff9800', date:9000 },
-     {month: 'Dec', color: '#c62828', date:10500 },
-     {month: 'Jan', color: '#000000', date:12000 },
- ]
+     {month: 'Sep', color: '#2ecc71', date: new Date(2019, 8, 2)},
+     {month: 'Oct', color: '#ffeb3b', date: new Date(2019, 9, 1)},
+     {month: 'Nov', color: '#ff9800', date: new Date(2019, 10, 1)},
+     {month: 'Dec', color: '#c62828', date: new Date(2019, 10, 30)},
+     {month: 'Jan', color: '#000000', date: new Date(2019, 11, 28)},
+]
 
 const finalDate = new Date(2019, 11, 28)
-// const finalDate = 12000
-// const startDate = 0
 
-// let currentTimeAndDay = new Date()
-let currentTimeAndDay = 5000
-let minDateOfColor = 6000
+let currentTimeAndDay = new Date()
+
+let minDateOfColor = dateCycle[0].date
 let maxDateOfColor = finalDate
-
-let timer
 
 function update() {
     
-    let currentDate = new Date()
-    
-    let timerDate = finalDate - currentDate
-    let ms = Math.floor(timerDate / 10) % 100
-    let sc = Math.floor(timerDate / 1000) % 60
-    let min = Math.floor(timerDate / 60000) % 60
-    let hr = Math.floor(timerDate / 3600000)
+    currentTimeAndDay = new Date()
 
-    console.log(hr +":"+min.toString().padStart(2, "0")+":"+sc.toString().padStart(2, "0")+"."+ms.toString().padStart(2, "0"))
-
-    document.getElementById("hour").innerHTML = hr
-    document.getElementById("minute").innerHTML = min.toString().padStart(2, "0")
-    document.getElementById("second").innerHTML = sc.toString().padStart(2, "0")
-    document.getElementById("millisecond").innerHTML = ms.toString().padStart(2, "0")
+    tick_timer(currentTimeAndDay)
 
     for(let i=1; i<dateCycle.length; i++){
         if(currentTimeAndDay < dateCycle[i].date){
@@ -113,16 +91,27 @@ function update() {
             break
         }
     }
-    
-
 
     let scaledTime = scale(currentTimeAndDay, minDateOfColor, maxDateOfColor, 0, 100)
 
     document.body.style.backgroundColor = LinearColorInterpolator.findColorBetween(l, r, scaledTime).asRgbCss();
+}
 
-    // currentTimeAndDay = new Date()
-    currentTimeAndDay++
 
+function tick_timer(currentTimeAndDay){
+    
+    let timerDate = finalDate - currentTimeAndDay
+    let ms = Math.floor(timerDate / 10) % 100
+    let sc = Math.floor(timerDate / 1000) % 60
+    let min = Math.floor(timerDate / 60000) % 60
+    let hr = Math.floor(timerDate / 3600000)
+
+    console.log(hr +":"+min.toString().padStart(2, "0")+":"+sc.toString().padStart(2, "0")+"."+ms.toString().padStart(2, "0"))
+
+    document.getElementById("hour").innerHTML = hr
+    document.getElementById("minute").innerHTML = min.toString().padStart(2, "0")
+    document.getElementById("second").innerHTML = sc.toString().padStart(2, "0")
+    document.getElementById("millisecond").innerHTML = ms.toString().padStart(2, "0")
 }
 
 
