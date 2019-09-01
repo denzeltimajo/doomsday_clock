@@ -1,10 +1,13 @@
 {
   "name": "doomsday_clock",
-  "version": "1.0.0",
+  "version": "0.3.0",
   "description": "A doomsday clock using Electron.js",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --prune=true --out=release-builds",
+    "package-win": "electron-packager . doomsday_clock --overwrite --asar=true --platform=win32 --arch=ia32 --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"doomsday_clock\"",    
+    "package-linux": "electron-packager . doomsday_clock --overwrite --asar=true --platform=linux --arch=x64 --prune=true --out=release-builds"
   },
   "repository": {
     "type": "git",
@@ -18,6 +21,8 @@
   },
   "homepage": "https://github.com/denzeltimajo/doomsday_clock#readme",
   "devDependencies": {
-    "electron": "6.0.7"
-  }
+    "electron": "6.0.7",
+    "electron-packager": "^14.0.5"
+  },
+  "dependencies": {}
 }
