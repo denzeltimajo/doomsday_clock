@@ -119,6 +119,10 @@ function close_app(){
     remote.getCurrentWindow().close()
 }
 
+function ontop_app(){
+    remote.getCurrentWindow().setAlwaysOnTop(!remote.getCurrentWindow().isAlwaysOnTop())
+}
+
 setInterval(update, 10)
 
 
