@@ -121,6 +121,12 @@ function close_app(){
 
 function ontop_app(){
     remote.getCurrentWindow().setAlwaysOnTop(!remote.getCurrentWindow().isAlwaysOnTop())
+    let element = document.getElementById("ontop")
+    if(remote.getCurrentWindow().isAlwaysOnTop())
+        element.classList.add("active")
+    else
+        element.classList.remove("active")
+
 }
 
 setInterval(update, 10)
