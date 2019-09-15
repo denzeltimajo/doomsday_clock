@@ -18,6 +18,10 @@ Color.prototype.asRgbCss = function() {
     return "rgb("+this.r+", "+this.g+", "+this.b+")";
 }
 
+Color.prototype.asRgbaCss = function(alpha) {
+    return "rgba("+this.r+", "+this.g+", "+this.b+", " + alpha + ")";
+}
+
 const LinearColorInterpolator = {
     // convert 6-digit hex to rgb components;
     // accepts with or without hash ("335577" or "#335577")
@@ -50,7 +54,7 @@ const scale = (num, in_min, in_max, out_min, out_max) => {
 
 var l = new Color("#ffeb3b");
 var r = new Color("#ff9800");
-var backgroundColor = LinearColorInterpolator.findColorBetween(l, r, 50).asRgbCss();
+var backgroundColor = LinearColorInterpolator.findColorBetween(l, r, 50).asRgbaCss(0.5);
 
 /**
  * Sep = #2ecc71 - GREEN
@@ -75,6 +79,8 @@ let currentTimeAndDay = new Date()
 let minDateOfColor = dateCycle[0].date
 let maxDateOfColor = finalDate
 
+let isOpaque = false
+
 function update() {
     
     currentTimeAndDay = new Date()
@@ -94,7 +100,10 @@ function update() {
 
     let scaledTime = scale(currentTimeAndDay, minDateOfColor, maxDateOfColor, 0, 100)
 
-    document.body.style.backgroundColor = LinearColorInterpolator.findColorBetween(l, r, scaledTime).asRgbCss();
+    if(isOpaque)
+        document.body.style.backgroundColor = LinearColorInterpolator.findColorBetween(l, r, scaledTime).asRgbaCss(0.6);
+    else
+        document.body.style.backgroundColor = LinearColorInterpolator.findColorBetween(l, r, scaledTime).asRgbCss();
 }
 
 
@@ -106,7 +115,7 @@ function tick_timer(currentTimeAndDay){
     let min = Math.floor(timerDate / 60000) % 60
     let hr = Math.floor(timerDate / 3600000)
 
-    console.log(hr +":"+min.toString().padStart(2, "0")+":"+sc.toString().padStart(2, "0")+"."+ms.toString().padStart(2, "0"))
+    // console.log(hr +":"+min.toString().padStart(2, "0")+":"+sc.toString().padStart(2, "0")+"."+ms.toString().padStart(2, "0"))
 
     document.getElementById("hour").innerHTML = hr
     document.getElementById("minute").innerHTML = min.toString().padStart(2, "0")
@@ -129,6 +138,17 @@ function ontop_app(){
 
 }
 
+function opaque_app(){
+    isOpaque = !isOpaque
+
+    let element = document.getElementById("opaque")
+
+    if(isOpaque)
+        element.classList.add("active")
+    else
+        element.classList.remove("active")
+}
+
 setInterval(update, 10)
 
 
@@ -136,9 +156,6 @@ setInterval(update, 10)
 /**
  * TODO: kete
  * FIX HAMBURGER BUTTON NOT WORKING
- * Change D-day to image
  * Rezable toggle
- * Opacity togle
- * Always in front toggle
  * Change bottow navbar layout
  */
