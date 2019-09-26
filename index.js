@@ -52,8 +52,8 @@ const scale = (num, in_min, in_max, out_min, out_max) => {
     return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
-var l = new Color("#ffeb3b");
-var r = new Color("#ff9800");
+var l = new Color("#000000");
+var r = new Color("#000000");
 var backgroundColor = LinearColorInterpolator.findColorBetween(l, r, 50).asRgbaCss(0.5);
 
 /**
@@ -66,9 +66,9 @@ var backgroundColor = LinearColorInterpolator.findColorBetween(l, r, 50).asRgbaC
 
 const dateCycle = [
      {month: 'Sep', color: '#2ecc71', date: new Date(2019, 8, 2)},
-     {month: 'Oct', color: '#ffeb3b', date: new Date(2019, 9, 1)},
-     {month: 'Nov', color: '#ff9800', date: new Date(2019, 10, 1)},
-     {month: 'Dec', color: '#d61a1a', date: new Date(2019, 10, 30)},
+     {month: 'Oct', color: '#f1c40f', date: new Date(2019, 9, 1)},
+     {month: 'Nov', color: '#e67e22', date: new Date(2019, 10, 1)},
+     {month: 'Dec', color: '#c0392b', date: new Date(2019, 10, 30)},
      {month: 'Jan', color: '#000000', date: new Date(2019, 11, 28)},
 ]
 
@@ -89,7 +89,7 @@ function update() {
 
     for(let i=1; i<dateCycle.length; i++){
         if(currentTimeAndDay < dateCycle[i].date){
-            l = new Color(dateCycle[i-1].color);
+            l = new Color(dateCycle[i-1].color)
             r = new Color(dateCycle[i].color)
             
             minDateOfColor = dateCycle[i-1].date
