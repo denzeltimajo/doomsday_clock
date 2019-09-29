@@ -168,6 +168,5 @@ setInterval(update, 10)
 /**
  * TODO: kete
  * FIX HAMBURGER BUTTON NOT WORKING. Fix Hamburgrer design
- * Rezable toggle
  * Change bottow navbar layout
  */
