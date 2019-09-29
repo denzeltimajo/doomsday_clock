@@ -56,13 +56,6 @@ var l = new Color("#000000");
 var r = new Color("#000000");
 var backgroundColor = LinearColorInterpolator.findColorBetween(l, r, 50).asRgbaCss(0.5);
 
-/**
- * Sep = #2ecc71 - GREEN
- * Oct = #ffeb3b - YELLOW
- * Nov = #ff9800 - ORANGE
- * Dec = #c62828 - RED
- * Jan = #000000 - BLACK
- */
 
 const dateCycle = [
      {month: 'Sep', color: '#2ecc71', date: new Date(2019, 8, 2)},
@@ -80,6 +73,8 @@ let minDateOfColor = dateCycle[0].date
 let maxDateOfColor = finalDate
 
 let isOpaque = false
+
+let textFlag = true
 
 function update() {
     
@@ -104,6 +99,12 @@ function update() {
         document.body.style.backgroundColor = LinearColorInterpolator.findColorBetween(l, r, scaledTime).asRgbaCss(0.6);
     else
         document.body.style.backgroundColor = LinearColorInterpolator.findColorBetween(l, r, scaledTime).asRgbCss();
+
+    if(currentTimeAndDay >= finalDate && textFlag){
+        textFlag = false
+        change()
+    }
+    
 }
 
 
@@ -149,13 +150,24 @@ function opaque_app(){
         element.classList.remove("active")
 }
 
+
+function change() {
+    let elem = document.getElementById("endMessage");
+    elem.classList.add('hide');
+    setTimeout(function () {
+        elem.innerHTML = "Operation Onslaught FAIL";
+        elem.classList.remove('hide');
+        
+    }, 1500);
+}
+
 setInterval(update, 10)
 
 
 
 /**
  * TODO: kete
- * FIX HAMBURGER BUTTON NOT WORKING
+ * FIX HAMBURGER BUTTON NOT WORKING. Fix Hamburgrer design
  * Rezable toggle
  * Change bottow navbar layout
  */

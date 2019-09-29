@@ -1,5 +1,12 @@
 html, body {margin: 0; height: 100%; overflow: hidden}
 
+.main-text {
+    font-family: 'Inconsolata', 'IBM Plex Mono', 'Titillium Web', sans-serif;
+    font-size: 12.5vw;
+    text-shadow: 0.25vw 0.25vw 2px rgba(0,0,0,.9);
+    color: #fff;
+}
+
 .padder {
     padding: 2rem 1rem;
 }
@@ -20,9 +27,12 @@ html, body {margin: 0; height: 100%; overflow: hidden}
     -webkit-app-region: drag;
 }
 
-#timer {
-    font-family: 'Inconsolata', 'IBM Plex Mono', 'Titillium Web', sans-serif;
-    font-size: 12.5vw;
-    text-shadow: 0.25vw 0.25vw 2px rgba(0,0,0,.9);
-    color: #fff;
+#endMessage {
+    opacity: 1;
+    transition: opacity 1.5s;
+
+    font-size: 4vw;
+}
+.hide {
+    opacity: 0 !important;
 }
