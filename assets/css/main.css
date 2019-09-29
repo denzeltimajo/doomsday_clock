@@ -7,6 +7,10 @@ html, body {margin: 0; height: 100%; overflow: hidden}
     color: #fff;
 }
 
+.red-text {
+    color: #ef5350;
+}
+
 .padder {
     padding: 2rem 1rem;
 }

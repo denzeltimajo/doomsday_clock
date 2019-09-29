@@ -155,7 +155,7 @@ function change() {
     let elem = document.getElementById("endMessage");
     elem.classList.add('hide');
     setTimeout(function () {
-        elem.innerHTML = "Operation Onslaught FAIL";
+        elem.innerHTML = 'Operation Onslaught <span class="red-text">FAIL</span>';
         elem.classList.remove('hide');
         
     }, 1500);
