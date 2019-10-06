@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, globalShortcut, ipcMain  } = require('electron')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -31,6 +31,23 @@ function createWindow () {
   })
 
   win.removeMenu()
+
+  const focusWindowShortcut = globalShortcut.register('CmdOrCtrl+Alt+`', () => {
+    win.webContents.send('key-shorcut', 'focus')
+  })
+  const onTopShortcut = globalShortcut.register('CmdOrCtrl+Alt+1', () => {
+    win.webContents.send('key-shorcut', 'onTop')
+  })
+  const opaqueShortcut = globalShortcut.register('CmdOrCtrl+Alt+2', () => {
+    win.webContents.send('key-shorcut', 'opaque')
+  })
+
+  if (!focusWindowShortcut || !onTopShortcut || !opaqueShortcut) {
+    console.log('registration failed')
+  }
+
+  // Check whether a shortcut is registered.
+  console.log(!focusWindowShortcut || !onTopShortcut || !opaqueShortcut)
 }
 
 // This method will be called when Electron has finished
@@ -53,4 +70,9 @@ app.on('activate', () => {
   if (win === null) {
     createWindow()
   }
+})
+
+app.on('will-quit', () => {
+  // Unregister all shortcuts.
+  globalShortcut.unregisterAll()
 })

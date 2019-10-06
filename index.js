@@ -1,4 +1,4 @@
-const {remote} = require('electron')
+const {remote, ipcRenderer } = require('electron')
 
 
 //<script src="https://gist.github.com/maxwells/8251275.js"></script>
@@ -130,6 +130,7 @@ function close_app(){
 }
 
 function ontop_app(){
+    remote.getCurrentWindow().focus()
     remote.getCurrentWindow().setAlwaysOnTop(!remote.getCurrentWindow().isAlwaysOnTop())
     let element = document.getElementById("ontop")
     if(remote.getCurrentWindow().isAlwaysOnTop())
@@ -140,6 +141,8 @@ function ontop_app(){
 }
 
 function opaque_app(){
+    remote.getCurrentWindow().focus()
+    
     isOpaque = !isOpaque
 
     let element = document.getElementById("opaque")
@@ -150,6 +153,12 @@ function opaque_app(){
         element.classList.remove("active")
 }
 
+function focus_window(){
+    if(remote.getCurrentWindow().isFocused())
+        remote.getCurrentWindow().minimize()
+    else
+        remote.getCurrentWindow().focus()
+}
 
 function change() {
     let elem = document.getElementById("endMessage");
@@ -161,9 +170,18 @@ function change() {
     }, 1500);
 }
 
+ipcRenderer.on('key-shorcut', (event, arg) => {
+    const shortcutSwitch = {
+        focus: focus_window, 
+        onTop: ontop_app, 
+        opaque: opaque_app,
+    }
+
+    shortcutSwitch[arg]()
+
+})
+
 setInterval(update, 10)
-
-
 
 /**
  * TODO: kete
