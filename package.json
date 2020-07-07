@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/denzeltimajo/doomsday_clock#readme",
   "devDependencies": {
-    "electron": "6.0.7",
+    "electron": "7.2.4",
     "electron-packager": "^14.0.5"
   },
   "dependencies": {}
