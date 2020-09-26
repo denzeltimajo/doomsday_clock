@@ -68,7 +68,7 @@ const dateCycle = [
      {month: 'Sep', color: '#2ecc71', date: new Date(2019, 8, 2)},
      {month: 'Oct', color: '#ffeb3b', date: new Date(2019, 9, 1)},
      {month: 'Nov', color: '#ff9800', date: new Date(2019, 10, 1)},
-     {month: 'Dec', color: '#c62828', date: new Date(2019, 10, 30)},
+     {month: 'Dec', color: '#d61a1a', date: new Date(2019, 10, 30)},
      {month: 'Jan', color: '#000000', date: new Date(2019, 11, 28)},
 ]
 
@@ -110,10 +110,10 @@ function update() {
 function tick_timer(currentTimeAndDay){
     
     let timerDate = finalDate - currentTimeAndDay
-    let ms = Math.floor(timerDate / 10) % 100
-    let sc = Math.floor(timerDate / 1000) % 60
-    let min = Math.floor(timerDate / 60000) % 60
-    let hr = Math.floor(timerDate / 3600000)
+    let ms = Math.max(Math.floor(timerDate / 10) % 100, 0)
+    let sc = Math.max(Math.floor(timerDate / 1000) % 60, 0)
+    let min = Math.max(Math.floor(timerDate / 60000) % 60, 0)
+    let hr = Math.max(Math.floor(timerDate / 3600000), 0)
 
     // console.log(hr +":"+min.toString().padStart(2, "0")+":"+sc.toString().padStart(2, "0")+"."+ms.toString().padStart(2, "0"))
 
